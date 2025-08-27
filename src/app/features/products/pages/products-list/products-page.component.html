@@ -1,0 +1,16 @@
+<div class="mt-10">
+  @if (loading()) {
+    <div>Loading...</div>
+  }
+  @else
+  {
+    <div class="products-list">
+      @for (product of products() ; track $index) {
+        <product-item-card [product]="product" (onAddToCart)="addToCart($event)"></product-item-card>
+      }
+
+    </div>
+    <button class="join-item btn btn-outline" (click)="prevPage()">Prev</button>
+    <button class="join-item btn btn-outline" (click)="nextPage()">Next</button>
+  }
+</div>
