@@ -1,6 +1,7 @@
 import { Component, computed, input, signal } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 import { CurrencyPipe } from '@angular/common';
+import { CartItem } from '../../../features/cart/store/cart.reducer';
 
 @Component({
   selector: 'shared-menu-card-button',
@@ -10,10 +11,19 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class MenuCardButton {
 
-  public cartItems = input.required<Product[]>();
+  public cartItems = input.required<CartItem[]>();
+
   public cartItemsPriceCount = computed(() => {
     let count = 0;
-    this.cartItems().forEach(item => count += item.price);
+    this.cartItems().forEach(item => count += item.product.price * item.quantity);
     return count
   });
+
+  public cartItemsCount = computed(() => {
+    let count = 0;
+    this.cartItems().forEach(item => count += item.quantity);
+    return count
+  });
+
+
 }

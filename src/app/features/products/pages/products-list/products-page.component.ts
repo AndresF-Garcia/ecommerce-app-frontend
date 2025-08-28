@@ -46,7 +46,7 @@ export default class ProductsPageComponent implements OnInit {
       if (!params['page'] || !params['pageSize']) {
         this.router.navigate([], {
           relativeTo: this.route,
-          queryParams: { page: this.page, pageSize: this.pageSize },
+          queryParams: { page: this.page(), pageSize: this.pageSize() },
           queryParamsHandling: 'merge'
         });
       }

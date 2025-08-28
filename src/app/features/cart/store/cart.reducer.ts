@@ -19,6 +19,14 @@ export const cartReducer = createReducer(
   initialState,
 
   on(CartActions.addToCart, (state, { product }) => {
+    const existingItem = state.items.find(i => i.product.id === product.id);
+
+    if(existingItem) {
+      return {
+        items: [...state.items.filter(i => i.product.id !== product.id), { product, quantity: existingItem.quantity + 1 }]
+      }
+    }
+
     return {
         items: [...state.items, { product, quantity: 1 }]
     };
