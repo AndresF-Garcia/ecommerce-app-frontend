@@ -1,0 +1,33 @@
+<ul class="list bg-base-100 rounded-box shadow-md mx-7 my-2">
+
+  @for (item of cartItems(); track $index) {
+    <li class="list-row">
+      <div><img class="size-10 rounded-box" src="{{item.product.mainImage}}" /></div>
+      <div>
+        <div>{{item.product.title}}</div>
+        <div class="text-xs uppercase font-semibold opacity-60">{{item.product.description}}</div>
+      </div>
+
+      <div class="join">
+        <button class="join-item btn hover:btn-error" (click)="removeOneItem(item.product.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+          </svg>
+        </button>
+        <button class="join-item btn btn-disabled text-black">{{item.quantity}}</button>
+        <button class="join-item btn hover:btn-info" (click)="addOneItem(item.product.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+          </svg>
+        </button>
+      </div>
+
+      <button class="btn btn-square btn-ghost" (click)="removeItem(item.product.id)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill size-[1.2em]" viewBox="0 0 16 16">
+          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+        </svg>
+      </button>
+    </li>
+  }
+
+</ul>

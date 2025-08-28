@@ -23,18 +23,44 @@ export const cartReducer = createReducer(
 
     if(existingItem) {
       return {
+        ...state,
         items: [...state.items.filter(i => i.product.id !== product.id), { product, quantity: existingItem.quantity + 1 }]
       }
     }
 
     return {
-        items: [...state.items, { product, quantity: 1 }]
+      ...state,
+      items: [...state.items, { product, quantity: 1 }]
     };
   }),
 
   on(CartActions.removeFromCart, (state, { productId }) => ({
     ...state,
     items: state.items.filter(i => i.product.id !== productId)
+  })),
+
+  on(CartActions.removeOneItem, (state, { productId }) => ({
+    ...state,
+    items: state.items
+      .map(item => {
+        if (item.product.id !== productId) return item;
+
+        if (item.quantity === 1) return null;
+
+        return { ...item, quantity: item.quantity - 1 };
+      })
+      .filter(Boolean) as CartItem[]
+  })),
+
+  on(CartActions.addOneItem, (state, { productId }) => ({
+    ...state,
+    items: state.items
+      .map(item => {
+        if (item.product.id !== productId) return item;
+
+        return { ...item, quantity: item.quantity + 1 };
+      })
+      .filter(Boolean) as CartItem[]
   })),
 
   on(CartActions.clearCart, state => ({

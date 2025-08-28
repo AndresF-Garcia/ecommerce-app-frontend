@@ -1,6 +1,6 @@
 <div class="navbar bg-base-100 shadow-sm">
   <div class="flex-1">
-    <a class="btn btn-ghost text-xl">Productos</a>
+    <a class="btn btn-ghost text-xl" [routerLink]="['/products']">Productos</a>
   </div>
   <div class="flex-none">
     <shared-menu-card-button [cartItems]="cartItems()" class="mr-3.5"></shared-menu-card-button>

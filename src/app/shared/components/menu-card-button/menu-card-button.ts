@@ -2,10 +2,11 @@ import { Component, computed, input, signal } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 import { CurrencyPipe } from '@angular/common';
 import { CartItem } from '../../../features/cart/store/cart.reducer';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'shared-menu-card-button',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './menu-card-button.html',
   styleUrl: './menu-card-button.css'
 })

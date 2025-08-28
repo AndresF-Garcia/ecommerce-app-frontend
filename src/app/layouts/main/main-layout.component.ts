@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { MenuCardButton } from "../../shared/components/menu-card-button/menu-card-button";
 import { MenuProfileButton } from "../../shared/components/menu-profile-button/menu-profile-button";
 import { Product } from '../../shared/interfaces/product.interface';
@@ -9,7 +9,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   templateUrl: 'main-layout.component.html',
-  imports: [RouterOutlet, MenuCardButton, MenuProfileButton]
+  imports: [RouterOutlet, MenuCardButton, MenuProfileButton, RouterLink]
 })
 
 export default class MainLayoutComponent{
